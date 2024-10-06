@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routes import pdf_router
+from app.routes.pdf_routes import router as pdf_router
 
 app = FastAPI()
 
