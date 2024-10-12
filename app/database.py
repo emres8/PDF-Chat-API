@@ -1,10 +1,9 @@
 
-from pymongo import MongoClient
 from app.config import Config
+import motor.motor_asyncio
 
-client = MongoClient(Config.MONGO_CONNECTION_STRING)
-database = Config.MONGO_DATABASE_NAME
-db = client[database]
+client = motor.motor_asyncio.AsyncIOMotorClient(Config.MONGO_CONNECTION_STRING)
+db = client[Config.MONGO_DATABASE_NAME]
 
 def connect_to_collection(collection_name): 
     return db[collection_name]
