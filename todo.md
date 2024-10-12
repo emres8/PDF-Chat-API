@@ -1,8 +1,9 @@
 * add design pattern to use any llm with ease - done
+* Decide Folder Structure for models - done
+* Solve dependency bug - done
+* Create Database - done
 
 * Dockerize
-* Advanced Logging or Error Service
-* Solve dependency bug
-* Decide Folder Structure for models 
 * Test
-* Create Database - done
+* Investigate dependencies more
+* Advanced Logging or Error Service

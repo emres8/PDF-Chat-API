@@ -1,25 +1,14 @@
-import redis.asyncio as redis
 from fastapi import APIRouter, HTTPException, Depends
 
 from app.services.pdf_service import PDFService
-from app.repositories.pdf_repository import PDFRepository
 from app.services.chat_service import ChatService
 from app.schemas.chat_schema import ChatRequest
-from app.external_services.gemini import GeminiChatModel
-
+from app.dependencies import get_chat_service, get_pdf_service
 
 router = APIRouter()
 
-redis_client = redis.Redis(host='localhost', port=6379)
-
-chat_service = ChatService(GeminiChatModel(), redis_client)
-
-def get_pdf_service():
-    repository = PDFRepository() 
-    return PDFService(repository)
-
 @router.post("/chat/{pdf_id}")
-async def chat_with_pdf(pdf_id: str, chat_request: ChatRequest, pdf_service: PDFService = Depends(get_pdf_service)):
+async def chat_with_pdf(pdf_id: str, chat_request: ChatRequest, pdf_service: PDFService = Depends(get_pdf_service), chat_service: ChatService = Depends(get_chat_service)):
     try:
         pdf_document = await pdf_service.get_pdf(pdf_id)
 
