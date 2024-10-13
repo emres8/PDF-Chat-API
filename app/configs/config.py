@@ -9,3 +9,4 @@ class Config:
     MONGO_DATABASE_NAME = os.getenv('MONGO_DATABASE_NAME')
     REDIS_HOST = os.getenv('REDIS_HOST', 'localhost')    
     REDIS_PORT = os.getenv('REDIS_PORT', 6379)
+    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

@@ -3,3 +3,4 @@ MONGO_CONNECTION_STRING=your_mongo_connection_string
 MONGO_DATABASE_NAME = your_mongo_database_name
 REDIS_HOST = redis_host
 REDIS_PORT = redis_port
+OPENAI_API_KEY = your_open_api_key
