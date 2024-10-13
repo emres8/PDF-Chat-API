@@ -1,7 +1,7 @@
 import functools
 import asyncio
 import inspect
-from app.logging_config import logger
+from app.configs.logging_config import logger
 
 def log_function(start_message=None, end_message=None):
     def decorator(func):

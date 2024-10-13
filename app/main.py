@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 
 from app.middlewares.error_handler_middleware import ErrorHandlerMiddleware
-from app.error_handlers import (
+from app.utils.error_handlers import (
     value_error_handler,
     validation_exception_handler,
     key_error_handler,

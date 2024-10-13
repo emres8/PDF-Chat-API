@@ -1,4 +1,4 @@
-from app.database import pdf_collection
+from app.db.database import pdf_collection
 from app.models.pdf_model import PDFDocument
 from bson import ObjectId
 

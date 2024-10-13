@@ -1,7 +1,7 @@
 from fastapi import APIRouter, UploadFile, Depends
 
 from app.services.pdf_service import PDFService
-from app.dependencies import get_pdf_service, validate_pdf_id
+from app.utils.dependencies import get_pdf_service, validate_pdf_id
 
 router = APIRouter()
 

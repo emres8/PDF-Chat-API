@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from app.services.pdf_service import PDFService
 from app.services.chat_service import ChatService
 from app.schemas.chat_schema import ChatRequest
-from app.dependencies import get_chat_service, get_pdf_service, validate_pdf_id
+from app.utils.dependencies import get_chat_service, get_pdf_service, validate_pdf_id
 
 router = APIRouter()
 

@@ -1,7 +1,7 @@
-from fastapi import Request, HTTPException
+from fastapi import Request
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
-from app.logging_config import logger
+from app.configs.logging_config import logger
 
 class ErrorHandlerMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):

@@ -1,5 +1,5 @@
 
-from app.config import Config
+from app.configs.config import Config
 import motor.motor_asyncio
 
 client = motor.motor_asyncio.AsyncIOMotorClient(Config.MONGO_CONNECTION_STRING)

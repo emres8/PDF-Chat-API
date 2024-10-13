@@ -1,5 +1,5 @@
 import redis.asyncio as redis
-from app.decorators import log_function
+from app.utils.decorators import log_function
 from app.external_services.language_model import LanguageModel
 class ChatService:
     def __init__(self, chat_model: LanguageModel, redis_client: redis.Redis):

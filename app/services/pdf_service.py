@@ -1,4 +1,4 @@
-from app.decorators import log_function
+from app.utils.decorators import log_function
 from app.utils.pdf_processor import PDFProcessor
 from app.repositories.pdf_repository import PDFRepository
 from app.models.pdf_model import PDFMetadata

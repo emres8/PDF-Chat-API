@@ -1,6 +1,6 @@
 import google.generativeai as genai
-from app.config import Config
-from app.decorators import log_function
+from app.configs.config import Config
+from app.utils.decorators import log_function
 from app.external_services.language_model import LanguageModel
 
 class GeminiLanguageModel(LanguageModel):
