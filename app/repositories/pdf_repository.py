@@ -13,7 +13,7 @@ class PDFRepository:
             metadata=metadata
         )
 
-        result = await self.collection.insert_one(pdf_data.dict(by_alias=True))
+        result = await self.collection.insert_one(pdf_data.model_dump(by_alias=True))
         return str(result.inserted_id)
 
     async def get_pdf_by_id(self, pdf_id: str):

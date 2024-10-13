@@ -1,11 +1,11 @@
 import re
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 import re
 from nltk.corpus import stopwords
 
 class PDFProcessor:
     ALLOWED_FILE_TYPES = ["application/pdf"]
-    MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB size limit
+    MAX_FILE_SIZE = 4 * 1024 * 1024  # 10 MB size limit
 
     @staticmethod
     def validate(file):

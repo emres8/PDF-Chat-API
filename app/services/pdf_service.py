@@ -18,7 +18,7 @@ class PDFService:
 
         metadata = PDFMetadata(page_count=page_count, file_name=file.filename)
 
-        pdf_id = await self.repository.save_pdf(file_name=file.filename, text=raw_text, metadata=metadata.dict())
+        pdf_id = await self.repository.save_pdf(file_name=file.filename, text=raw_text, metadata=metadata.model_dump())
         return pdf_id
 
     @log_function(
@@ -27,6 +27,4 @@ class PDFService:
     )
     async def get_pdf(self, pdf_id):
         pdf = await self.repository.get_pdf_by_id(pdf_id)
-        if not pdf:
-            raise ValueError(f"PDF with id {pdf_id} not found.")
         return pdf

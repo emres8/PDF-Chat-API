@@ -161,3 +161,10 @@ Response
 You can also access the API documentation at:
 * http://localhost:8000/docs for the interactive API documentation (Swagger UI).
 * http://localhost:8000/redoc for ReDoc documentation.
+
+
+
+
+## Potential Enhancements
+* Not mocking db and redis but use test database and docker-compose.test.yml
+* Testing for two other language model not added. They could be added 
