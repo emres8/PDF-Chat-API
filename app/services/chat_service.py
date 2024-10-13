@@ -1,10 +1,15 @@
 import redis.asyncio as redis
+from app.decorators import log_function
 from app.external_services.language_model import LanguageModel
 class ChatService:
     def __init__(self, chat_model: LanguageModel, redis_client: redis.Redis):
         self.chat_model = chat_model
         self.redis_client = redis_client
 
+    @log_function(
+        start_message="Initiating chat with PDF '{pdf_id}' for message '{message}'",
+        end_message="Chat with PDF '{pdf_id}' completed."
+    )
     async def chat_with_pdf(self, pdf_id: str, pdf_text: str, message: str):
       
         cache_key = f"faq:{pdf_id}:{message.lower()}"

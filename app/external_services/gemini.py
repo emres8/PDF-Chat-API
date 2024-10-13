@@ -1,5 +1,6 @@
 import google.generativeai as genai
 from app.config import Config
+from app.decorators import log_function
 from app.external_services.language_model import LanguageModel
 
 class GeminiLanguageModel(LanguageModel):
@@ -11,6 +12,10 @@ class GeminiLanguageModel(LanguageModel):
         genai.configure(api_key=self.api_key)
         self.model = genai.GenerativeModel("gemini-1.5-flash")
     
+    @log_function(
+        start_message="Generating response with Gemini LLM for message '{message}'",
+        end_message="Gemini LLM Response generated for message '{message}'"
+    )
     def generate_response(self, pdf_text: str, message: str) -> str:
         prompt = self.generate_context_aware_prompt(pdf_text, message)
         response = self.model.generate_content(prompt)
