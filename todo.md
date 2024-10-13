@@ -2,8 +2,15 @@
 * Decide Folder Structure for models - done
 * Solve dependency bug - done
 * Create Database - done
+* Test - done
+* Investigate dependencies more - done
+* Advanced Logging or Error Service - done
 
+* seperate routes test
+* solve test errors
+* create requirements-dev for test
 * Dockerize
-* Test
-* Investigate dependencies more
-* Advanced Logging or Error Service
+* make working two other llm
+* activate preprocess
+* timeout security middleware
+* test for other two if time left
