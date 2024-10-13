@@ -1,8 +1,8 @@
 import google.generativeai as genai
 from app.config import Config
-from app.services.chat_model import ChatModel
+from app.external_services.language_model import LanguageModel
 
-class GeminiChatModel(ChatModel):
+class GeminiLanguageModel(LanguageModel):
     def __init__(self):
         self.api_key = Config.GEMINI_API_KEY
         if not self.api_key:

@@ -1,7 +1,7 @@
 import redis.asyncio as redis
-from app.services.chat_model import ChatModel
+from app.external_services.language_model import LanguageModel
 class ChatService:
-    def __init__(self, chat_model: ChatModel, redis_client: redis.Redis):
+    def __init__(self, chat_model: LanguageModel, redis_client: redis.Redis):
         self.chat_model = chat_model
         self.redis_client = redis_client
 
