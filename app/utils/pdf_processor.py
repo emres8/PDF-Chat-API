@@ -1,12 +1,16 @@
 import re
-import spacy
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 from pypdf import PdfReader
 
-nlp = spacy.load("en_core_web_sm")
+nltk.download('punkt_tab', quiet=True)
+nltk.download('stopwords', quiet=True)
 
 class PDFProcessor:
     ALLOWED_FILE_TYPES = ["application/pdf"]
     MAX_FILE_SIZE = 4 * 1024 * 1024  # 4 MB size limit
+    STOPWORDS = set(stopwords.words('english'))
 
     @staticmethod
     def validate(file):
@@ -26,12 +30,12 @@ class PDFProcessor:
         text = re.sub(r'[$]', '', text)
 
         text = re.sub(r'\s+', ' ', text).strip()
-    
-        doc = nlp(text)
+        
+        words = word_tokenize(text)
 
         processed_text = ' '.join(
-            token.lemma_ for token in doc
-            if not token.is_stop and not token.is_punct
+            word for word in words
+            if word.lower() not in PDFProcessor.STOPWORDS and word.isalnum()
         )
 
         return processed_text
