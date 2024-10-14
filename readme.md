@@ -16,7 +16,8 @@ PDF Chat Service is a FastAPI-based application that allows users to upload PDFs
 
 ### Docker Image Usage
 
-You can run this FastAPI application directly using the pre-built Docker image available on Docker Hub. Make sure you have Docker installed on your machine.
+* You can run this FastAPI application directly using the pre-built Docker image available on Docker Hub.
+* Make sure you have Docker installed on your machine.
 
 #### Steps to Run the Application
 Pull the Docker image from Docker Hub
@@ -25,7 +26,6 @@ Pull the Docker image from Docker Hub
 docker pull emres8/sevenapps-case-app:latest
 ```
 Run the Docker container
-Once the image is pulled, you can run the FastAPI app using:
 
 ```bash
 docker run -d -p 8000:8000 --name sevenapps-case-app
@@ -37,7 +37,8 @@ This will start the FastAPI app and expose it on port 8000.
 
 * If you don't want to use Docker Image you can follow manual instructions to run the project:
 
-### Prerequisites for Manual Instructions
+## Manual Instructions
+### Prerequisites
 - Python 3.9+
 - MongoDB (local or cloud instance)
 - Redis (local or cloud instance)
@@ -76,7 +77,7 @@ uvicorn app.main:app --reload
 
 #### Upload PDF
 
-```http
+```
   POST /v1/pdf
 ```
 
@@ -86,7 +87,7 @@ uvicorn app.main:app --reload
 
 Example Usage
 
-```json
+```
 curl --location 'http://localhost:8000/v1/pdf' \
 --form 'file=@"/Desktop/sample.pdf"'
 ```
@@ -99,7 +100,7 @@ Response
 
 #### Get PDF by ID
 
-```http
+```
   GET /v1/pdf/${id}
 ```
 
@@ -128,7 +129,7 @@ Response
 
 #### Chat with PDF
 
-```http
+```
     POST /v1/chat/{pdf_id}
 ```
 Allows the user to ask questions about the content of the PDF using a specific language model (e.g., ```gemini```, ```langchain```, ```llamaindex```).
@@ -158,7 +159,7 @@ Response
 }
 ```
 
-You can also access the API documentation at:
+After project is ready you can also access the API documentation locally at:
 * http://localhost:8000/docs for the interactive API documentation (Swagger UI).
 * http://localhost:8000/redoc for ReDoc documentation.
 
@@ -168,3 +169,6 @@ You can also access the API documentation at:
 ## Potential Enhancements
 * Not mocking db and redis but use test database and docker-compose.test.yml
 * Testing for two other language model not added. They could be added 
+* Deployment to cloud
+
+

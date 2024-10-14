@@ -5,12 +5,13 @@
 * Test - done
 * Investigate dependencies more - done
 * Advanced Logging or Error Service - done
+* Dockerize - done
+* make working two other llm - done
+* timeout security middleware - done
 
+
+* activate preprocess
 * seperate routes test
 * solve test errors
 * create requirements-dev for test
-* Dockerize
-* make working two other llm
-* activate preprocess
-* timeout security middleware
-* test for other two if time left
+* fast-api-auth
