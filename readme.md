@@ -203,16 +203,16 @@ configfile: pytest.ini
 testpaths: tests
 plugins: asyncio-0.24.0, env-1.1.5, anyio-4.6.0
 asyncio: mode=Mode.AUTO, default_loop_scope=function
-collected 21 items                                                                                            
+collected 32 items                                                                                            
 
-tests/integration/test_chat_router.py .....                                                             [ 23%]
-tests/integration/test_pdf_router.py .....                                                              [ 47%]
-tests/unit/test_chat_service.py ..                                                                      [ 57%]
-tests/unit/test_gemini_language_model.py .                                                              [ 61%]
-tests/unit/test_pdf_processor.py .....                                                                  [ 85%]
+tests/integration/test_chat_router.py .....                                                             [ 15%]
+tests/integration/test_pdf_router.py .....                                                              [ 31%]
+tests/unit/test_chat_service.py ..                                                                      [ 37%]
+tests/unit/test_gemini_language_model.py .                                                              [ 40%]
+tests/unit/test_pdf_processor.py ................                                                       [ 90%]
 tests/unit/test_pdf_service.py ...                                                                      [100%]
 
-============================================= 21 passed in 0.07s ==============================================
+============================================= 32 passed in 0.14s ==============================================
 ```
 
 ## Potential Enhancements

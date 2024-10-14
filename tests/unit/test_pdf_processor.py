@@ -52,6 +52,33 @@ def large_size_pdf_file():
     return mock_file
 
 
+# --- Tests for `preprocess` Method ---
+
+@pytest.mark.parametrize("input_text, expected_output", [
+    # Test lemmatization and contraction handling
+    ("I'm happy", "happy"),
+    ("You're awesome", "awesome"),
+    ("I've seen this", "see"),
+    ("She'll arrive soon", "arrive soon"),
+    ("He doesn't like it", "like"),
+    ("It's a test", "test"),
+    
+    # Test stop words removal
+    ("This is a simple test", "simple test"),
+    ("I can't believe it's 2024!", "believe 2024"),
+    
+    # Test handling of contractions combined with stop words removal
+    ("I'm going to the store, and I've bought some things.", "go store buy thing"),
+    
+    # Test special characters removal (punctuation is removed except periods and commas)
+    ("Hello! This should remove #hashtags and @mentions.", "hello remove hashtag mention"),
+    
+    # Test normalization of extra spaces
+    ("   This     is  a   lot of     spaces   ", "lot space")
+])
+def test_preprocess(input_text, expected_output):
+    processed_text = PDFProcessor.preprocess(input_text)
+    assert processed_text == expected_output
 
 # --- Tests for `validate` Method ---
 

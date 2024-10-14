@@ -1,11 +1,12 @@
 import re
+import spacy
 from pypdf import PdfReader
-import re
-from nltk.corpus import stopwords
+
+nlp = spacy.load("en_core_web_sm")
 
 class PDFProcessor:
     ALLOWED_FILE_TYPES = ["application/pdf"]
-    MAX_FILE_SIZE = 4 * 1024 * 1024  # 10 MB size limit
+    MAX_FILE_SIZE = 4 * 1024 * 1024  # 4 MB size limit
 
     @staticmethod
     def validate(file):
@@ -19,15 +20,21 @@ class PDFProcessor:
 
     @staticmethod
     def preprocess(text):
-        text = re.sub(r'[^a-zA-Z0-9\s]', ' ', text)
-        text = re.sub(r'\s+', ' ', text).strip().lower()
 
-        stop_words = set(stopwords.words('english'))
-        text = ' '.join([word for word in text.split() if word not in stop_words])
+        text = re.sub(r'[@#]', '', text)
 
-        text = re.sub(r'\d+', '', text)
+        text = re.sub(r'[$]', '', text)
 
-        return text
+        text = re.sub(r'\s+', ' ', text).strip()
+    
+        doc = nlp(text)
+
+        processed_text = ' '.join(
+            token.lemma_ for token in doc
+            if not token.is_stop and not token.is_punct
+        )
+
+        return processed_text
 
     @staticmethod
     def extract_text(file):

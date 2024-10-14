@@ -14,11 +14,11 @@ class PDFService:
     async def process_and_save_pdf(self, file):
         PDFProcessor.validate(file)
         raw_text, page_count = PDFProcessor.extract_text(file)
-        #processed_text = PDFProcessor.preprocess(raw_text)
+        processed_text = PDFProcessor.preprocess(raw_text)
 
         metadata = PDFMetadata(page_count=page_count, file_name=file.filename)
 
-        pdf_id = await self.repository.save_pdf(file_name=file.filename, text=raw_text, metadata=metadata.model_dump())
+        pdf_id = await self.repository.save_pdf(file_name=file.filename, text=processed_text, metadata=metadata.model_dump())
         return pdf_id
 
     @log_function(
