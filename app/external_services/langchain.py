@@ -7,7 +7,6 @@ from app.configs.config import Config
 
 class LangchainLanguageModel(LanguageModel):
     def __init__(self):
-        # Get the OpenAI API key from the environment or config
         self.api_key = Config.OPENAI_API_KEY
         if not self.api_key:
             raise ValueError("API key not found. Please set the OPENAI_API_KEY environment variable.")
@@ -28,7 +27,6 @@ class LangchainLanguageModel(LanguageModel):
             "message": message
         }
         
-        # Invoke the chain with the input data
         response = chain.invoke(input_data)
         return response
 

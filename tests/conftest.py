@@ -32,5 +32,5 @@ async def test_database():
 
     # Mock the methods used in the PDFRepository
     with patch("app.repositories.pdf_repository.PDFRepository.get_pdf_by_id", test_db.get_pdf_by_id), \
-         patch("app.repositories.pdf_repository.PDFRepository.save_pdf", test_db.save_pdf):
+         patch("app.repositories.pdf_repository.PDFRepository.save_pdf", test_db.save_pdf): 
         yield test_db

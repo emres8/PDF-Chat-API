@@ -138,12 +138,12 @@ Allows the user to ask questions about the content of the PDF using a specific l
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `pdf_id` | `string` | **Required**.  The ID of the PDF to query |
-| `pdf_id` | `string` | **Required**.  The question you want to ask |
+| `message` | `string` | **Required**.  The question you want to ask |
 | `language_model_name` | `string` | **Optional**. The LLM to use (gemini by default)(can only take ```gemini```, ```langchain```, ```llamaindex```) |
 
 Example Usage
 
-```json
+```
 curl -X POST "http://localhost:8000/v1/chat/670a8a39c8e846c029106fc1" \
 -H "accept: application/json" \
 -H "Content-Type: application/json" \
@@ -166,8 +166,57 @@ After project is ready you can also access the API documentation locally at:
 
 
 
+
+## Testing
+
+#### Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### Run the tests using pytest:
+
+```bash
+pytest
+```
+*  Running Specific Tests
+To run a specific test file, you can provide the path to the test file:
+
+```bash
+pytest tests/integration/test_pdf_router.py
+```
+
+
+Or, to run a specific test function within a test file:
+
+```bash
+pytest tests/integration/test_pdf_router.py::test_get_pdf_valid
+```
+
+Default Project state should return
+```
+============================================= test session starts =============================================
+platform darwin -- Python 3.12.6, pytest-8.3.3, pluggy-1.5.0
+rootdir: /Users/emresafter/sevenapps-case
+configfile: pytest.ini
+testpaths: tests
+plugins: asyncio-0.24.0, env-1.1.5, anyio-4.6.0
+asyncio: mode=Mode.AUTO, default_loop_scope=function
+collected 21 items                                                                                            
+
+tests/integration/test_chat_router.py .....                                                             [ 23%]
+tests/integration/test_pdf_router.py .....                                                              [ 47%]
+tests/unit/test_chat_service.py ..                                                                      [ 57%]
+tests/unit/test_gemini_language_model.py .                                                              [ 61%]
+tests/unit/test_pdf_processor.py .....                                                                  [ 85%]
+tests/unit/test_pdf_service.py ...                                                                      [100%]
+
+============================================= 21 passed in 0.07s ==============================================
+```
+
 ## Potential Enhancements
-* Not mocking db and redis but use test database and docker-compose.test.yml
+* Not mocking db and redis but use test database and test container for testing
 * Testing for two other language model not added. They could be added 
 * Deployment to cloud
 
